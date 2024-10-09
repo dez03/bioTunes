@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 export default function Example() {
   return (
@@ -19,7 +21,7 @@ export default function Example() {
           ></div>
         </div>
 
-        {/* Middle Gradient (Mobile Only) */}
+        {/* Middle Gradient */}
         <div
           className="absolute inset-x-0 top-[50%] -z-10 transform-gpu overflow-visible blur-3xl "
           aria-hidden="true"
@@ -38,10 +40,9 @@ export default function Example() {
             <div className="sm:mb-8 sm:flex sm:justify-center">
               <div className="relative mb-8 rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
                 This project is still in development.{" "}
-                <a href="#" className="font-semibold text-indigo-600">
-                  <span className="absolute inset-0" aria-hidden="true" />
-                  Read more <span aria-hidden="true">&rarr;</span>
-                </a>
+                <Link to="/story" className="font-semibold text-indigo-600">
+                  Read More <span aria-hidden="true">&rarr;</span>
+                </Link>
               </div>
             </div>
             <div className="text-center">

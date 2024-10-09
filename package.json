@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.1.9",
-    "@heroicons/react": "^2.1.5"
+    "@heroicons/react": "^2.1.5",
+    "react-router-dom": "^6.26.2"
   }
 }
