@@ -70,8 +70,17 @@ export default function StoryPage() {
             Recently, I picked the project back up and I am committed to
             finishing it. However, it will take <i>even more</i> time as this is
             a large and complex project, and the development process is new to
-            me. I'm learning how to build this as I go. This project is more of
-            a way for me to refine my coding skills.
+            me. I'm learning how to build this as I go. If you want to keep
+            track of my project, you can find the&nbsp;
+            <a
+              href="https://github.com/dez03/bioTunes" // Replace this with Karson's actual Instagram URL
+              className="text-indigo-600 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              bioTunes repository here
+            </a>
+            {""}. I am keeping this project open sourced, so feel free to contribute!
           </p>
           <p className="text-lg text-gray-700 leading-8 mb-4">
             Seeing projects like this to its fruition is a skill I want to

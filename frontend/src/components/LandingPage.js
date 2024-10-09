@@ -59,7 +59,7 @@ export default function Example() {
                   href="#"
                   className="rounded-md px-3.5 py-2.5 text-sm bg-gray-400 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-not-allowed "
                 >
-                  Sign in with Spotify
+                  Sign in with Spotify (Coming Soon)
                 </a>
               </div>
             </div>
