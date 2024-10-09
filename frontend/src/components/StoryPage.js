@@ -71,7 +71,7 @@ export default function StoryPage() {
             finishing it. However, it will take <i>even more</i> time as this is
             a large and complex project, and the development process is new to
             me. I'm learning how to build this as I go. If you want to keep
-            track of my project, you can find the&nbsp;
+            track of my progress, you can find the&nbsp;
             <a
               href="https://github.com/dez03/bioTunes" // Replace this with Karson's actual Instagram URL
               className="text-indigo-600 hover:underline"
