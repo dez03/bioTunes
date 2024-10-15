@@ -12,7 +12,7 @@ dataManagement.setDb(db);
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://www.biotunes.app",
     credentials: true,
   })
 );
@@ -112,7 +112,7 @@ app.get("/auth/spotify/callback", async (req, res) => {
         const token = jwt.sign({ id: spotify_id }, process.env.JWT_SECRET, {
           expiresIn: "1h",
         });
-        res.redirect(`http://localhost:3000/success?token=${token}`);
+        res.redirect(`https://www.biotunes.app/success?token=${token}`);
       }
     );
   } catch (error) {
