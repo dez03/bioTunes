@@ -45,7 +45,7 @@ app.get("/auth/spotify", (req, res) => {
 });
 
 // Spotify callback route
-app.get("/auth/spotify/callback", async (req, res) => {
+app.get('/auth/spotify/callback', async (req, res) => {
   const { code } = req.query;
   try {
     const tokenResponse = await axios.post(
