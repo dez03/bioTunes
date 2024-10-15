@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Example() {
   const handleSpotifyLogin = () => {
-    window.location.href = "http://localhost:3001/auth/spotify"; //update with live endpoint
+    window.location.href = "https://www.biotunes.app/auth/spotify"; //update with live endpoint
   };
 
   return (

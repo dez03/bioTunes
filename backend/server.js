@@ -12,7 +12,10 @@ dataManagement.setDb(db);
 const app = express();
 app.use(
   cors({
-    origin: "https://www.biotunes.app",
+    origin:
+      process.env.NODE_ENV === "production"
+        ? "https://www.biotunes.app"
+        : "http://localhost:3000",
     credentials: true,
   })
 );
