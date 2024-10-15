@@ -33,17 +33,24 @@ app.get("/auth/spotify", (req, res) => {
     "user-top-read",
     "user-read-recently-played",
   ];
+  // Error handling
+  console.log("Spotify auth route hit");
+  console.log("Redirect URI:", process.env.SPOTIFY_REDIRECT_URI);
+  console.log("Client ID:", process.env.SPOTIFY_CLIENT_ID);
+
   // New URL created
   const spotifyAuthUrl =
     "https://accounts.spotify.com/authorize" +
     "?response_type=code" +
     "&client_id=" +
     process.env.SPOTIFY_CLIENT_ID +
+    app.use;
     "&scope=" +
     encodeURIComponent(scopes.join(" ")) +
     "&redirect_uri=" +
     encodeURIComponent(process.env.SPOTIFY_REDIRECT_URI);
 
+  console.log("Redirecting to:", spotifyAuthUrl);
   res.redirect(spotifyAuthUrl);
 });
 
