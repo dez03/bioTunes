@@ -1,34 +1,11 @@
-// import React from "react";
-
-// function LandingPage() {
-//   return (
-//     <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
-//       <div className="p-8 bg-white rounded-lg shadow-xl max-w-md">
-//         <h1 className="mb-4 text-3xl font-bold text-center text-gray-800">
-//           Welcome to bioTunes
-//         </h1>
-//         <p className="mb-6 text-center text-gray-600">
-//           This project is still in development. You'll soon be able to sign in
-//           with Spotify and enjoy all the features we're working on!
-//         </p>
-//         <button
-//           disabled
-//           className="w-full px-4 py-2 font-bold text-white bg-gray-400 cursor-not-allowed rounded-lg"
-//         >
-//           Sign in with Spotify (Coming Soon)
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default LandingPage;
-
-
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 export default function Example() {
+  const handleSpotifyLogin = () => {
+    window.location.href = "http://localhost:3001/auth/spotify"; // or update the live endpoint
+  };
+
   return (
     <div className="bg-white min-h-screen flex flex-col overflow-hidden">
       {/* Main Content */}
@@ -63,30 +40,43 @@ export default function Example() {
         {/* Page Content */}
         <div className="px-6 pt-14 lg:px-8 flex flex-col min-h-screen">
           <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 flex-grow flex flex-col justify-center">
-            <div className="sm:mb-8 sm:flex sm:justify-center">
-              <div className="relative mb-8 rounded-full px-3 py-1 text-sm leading-6 text-gray-600 ring-1 ring-gray-900/10 hover:ring-gray-900/20">
-                This project is still in development.{" "}
-                <Link to="/story" className="font-semibold text-indigo-600">
-                  Read More <span aria-hidden="true">&rarr;</span>
-                </Link>
-              </div>
-            </div>
             <div className="text-center">
+              {/* Logo Image */}
+              <div className="mb-8">
+                <img
+                  src="https://cdn.pixabay.com/photo/2013/07/13/12/16/note-159509_640.png" // Replace with actual path
+                  alt="bioTunes Logo"
+                  className="mx-auto w-48 h-48 object-contain"
+                />
+              </div>
+
+              {/* Welcome Text */}
               <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
                 Welcome to bioTunes
               </h1>
+
+              {/* Description */}
               <p className="mt-6 text-lg leading-8 text-gray-600">
-                Personalize your music experience by linking your Spotify and
-                Instagram accounts and displaying your favorite songs
-                seamlessly.
+                Link your Spotify account and generate personalized bio updates
+                based on your listening activity. Copy the generated text and
+                paste it into your Instagram bio!
               </p>
-              <div className="mt-10 flex flex-col items-center justify-center gap-x-6">
-                <a
-                  href="#"
-                  className="rounded-md px-3.5 py-2.5 text-sm bg-gray-400 font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 cursor-not-allowed "
+
+              {/* Sign In Button */}
+              <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-x-6 gap-y-4 sm:gap-y-0">
+                <button
+                  onClick={handleSpotifyLogin}
+                  className="w-fit-content sm:w-auto rounded-md bg-green-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-light-green focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
                 >
-                  Sign in with Spotify (Coming Soon)
-                </a>
+                  Sign in With Spotify
+                </button>
+                <Link
+                  to="/instainfo"
+                  className="w-full sm:w-auto text-sm font-semibold leading-6 text-gray-900 text-center"
+                >
+                  Why Can't I Link my Instagram Account?{" "}
+                  <span aria-hidden="true">→</span>
+                </Link>
               </div>
             </div>
           </div>
