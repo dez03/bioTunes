@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation, Navigate } from "react-router-dom";
 
+const API_URL = process.env.REACT_APP_API_URL || "https://www.biotunes.app";
+
+
 function SuccessPage() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -20,7 +23,7 @@ function SuccessPage() {
       if (token) {
         localStorage.setItem("token", token);
         try {
-          const response = await axios.get("http://localhost:3001/api/user", {
+          const response = await axios.get(`${API_URL}/api/user`, {
             headers: { Authorization: `Bearer ${token}` },
           });
           setUser(response.data);
@@ -43,12 +46,9 @@ function SuccessPage() {
 
       const token = localStorage.getItem("token");
       try {
-        const response = await axios.get(
-          `http://localhost:3001/api/${statType}`,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
+        const response = await axios.get(`${API_URL}/api/${statType}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        });
         console.log(`${statType} data:`, response.data);
         setStatData(response.data);
       } catch (error) {

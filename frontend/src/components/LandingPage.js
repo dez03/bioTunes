@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+const API_URL = process.env.REACT_APP_API_URL || "https://www.biotunes.app";
+
+
 export default function Example() {
   const handleSpotifyLogin = () => {
-    window.location.href = "https://www.biotunes.app/auth/spotify"; //update with live endpoint
+    window.location.href = `${API_URL}/auth/spotify`;
   };
 
   return (

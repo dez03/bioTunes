@@ -44,7 +44,6 @@ app.get("/auth/spotify", (req, res) => {
     "?response_type=code" +
     "&client_id=" +
     process.env.SPOTIFY_CLIENT_ID +
-    app.use;
     "&scope=" +
     encodeURIComponent(scopes.join(" ")) +
     "&redirect_uri=" +
