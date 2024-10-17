@@ -1,11 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 export default function Example() {
-  const handleSpotifyLogin = () => {
-    window.location.href = "http://localhost:3001/auth/spotify"; //update with live endpoint
-  };
+  //TODO Change URL
+  //FIXME Change URL
+  const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
 
+  const handleSpotifyLogin = () => {
+    window.location.href = `${API_URL}/auth/spotify`;
+  };
   return (
     <div className="bg-white min-h-screen flex flex-col overflow-hidden">
       {/* Main Content */}
@@ -70,13 +72,7 @@ export default function Example() {
                 >
                   Sign in With Spotify
                 </button>
-                <Link
-                  to="/instainfo"
-                  className="w-full sm:w-auto text-sm font-semibold leading-6 text-gray-900 text-center"
-                >
-                  Why Can't I Link my Instagram Account?{" "}
-                  <span aria-hidden="true">→</span>
-                </Link>
+                
               </div>
             </div>
           </div>

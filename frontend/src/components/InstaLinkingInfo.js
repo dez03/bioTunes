@@ -34,48 +34,113 @@ export default function StoryPage() {
 
         {/* Page Content */}
         <div className="max-w-3xl py-16 mx-auto min-h-screen">
-          <h1 className="text-2xl font-bold mb-6">
+          <h1 className="text-3xl font-bold mb-6">
             Why Can't I Link My Instagram Account?
           </h1>
-          <p className="text-gray-600 text-lg mb-6">
-            First off, thank you for checking out bioTunes.
-          </p>
-          <p className="text-gray-600 text-lg mb-4">
-            If you're wondering why you can't link your Instagram account yet,
-            it's because of a few hurdles I've run into while building this
-            project.
-          </p>
-          <p className="text-gray-600 text-lg mb-4">
-            One of the biggest roadblocks is Instagram's API. The Instagram
-            Basic Display API, which I was using to enable this
-            feature, is being shut down on December 4, 2024. The very tool I
-            needed to connect Instagram accounts won't be available anymore.
-          </p>
-          <p className="text-gray-600 text-lg mb-4">
-            I’ve explored other options, but right now, the only way to update
-            Instagram bios automatically is through the Instagram Graph API,
-            which only works for business or creator accounts. Unfortunately,
-            regular personal accounts can’t use this feature. I’m looking
-            into ways to make it more accessible in the future, but for now, I
-            had to pivot and allow users to copy and paste their bio updates
-            manually.
-          </p>
-          <p className="text-gray-600 text-lg mb-4">
-            This has been a learning process, and I'm committed to making
-            bioTunes as great as I can. I truly appreciate your patience and
-            support as I deal with Instagram's amazing service. The vision is
-            still there, and I’m working hard to figure out how to make it a
-            reality for everyone!
-          </p>
-          <p className="text-gray-600 text-lg mb-4">
-            For those up for the challenge, I will make the original terminal-based version of
-            bioTunes public. However, please keep in mind that it's not exactly
-            user-friendly for most people. The terminal version requires some
-            basic knowledge of coding and using the command line. You’d need to
-            download the repo, set up the environment, and run it manually from
-            your computer. So, unless you’re familiar with how to work with
-            code, this version might not be the easiest to use. But if you're curious, feel free to check it out!
-          </p>
+          <div className="text-gray-600 text-lg mb-6">
+            <p className="mb-4">
+              First off, thank you for checking out bioTunes. Your interest and
+              support mean a lot!
+            </p>
+
+            <p className="mb-4">
+              If you're wondering about linking your Instagram account, I want
+              to explain why this feature isn't available and share some
+              important updates about the project.
+            </p>
+
+            <h2 className="text-2xl text-black font-semibold mb-3">
+              The Instagram Challenge
+            </h2>
+            <p className="mb-4">
+              Instagram is an especially unforgiving platform for third-party
+              apps like bioTunes. Their systems are designed to prevent
+              automated logins and bio updates, which is exactly what bioTunes
+              needed to do. But despite my efforts at working round these
+              limitations, I realized that scaling this feature could
+              potentially put users' accounts in danger of being flagged or
+              banned by Instagram.{" "}
+              <a
+                href="https://www.swebdevelopment.com/instagram-api-sucks/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 hover:underline"
+              >
+                Read more about Instagram's API limitations here
+              </a>
+              .
+            </p>
+
+            <h2 className="text-black text-2xl font-semibold mb-3">
+              API Changes and Limitations
+            </h2>
+            <p className="mb-4">
+              The Instagram Basic Display API, which was needed for this
+              project, is being discontinued on December 4, 2024. The
+              alternative, Instagram Graph API, is limited to business or
+              creator accounts, making it inaccessible for most users anyways.
+              And use of that API is meant for businesses, not independent
+              developers like myself.
+            </p>
+
+            <h2 className="text-2xl font-semibold mb-3 text-black">
+              Pivoting bioTunes
+            </h2>
+            <p className="mb-4">
+              Given these challenges, I've decided to pivot bioTunes. Instead of
+              automatic Instagram updates, I now made it easy for you to
+              manually copy and paste your bio updates. This approach is not
+              ideal, but you can still showcase your music tastes without
+              risking your Instagram account.
+            </p>
+
+            <h2 className="text-black text-2xl font-semibold mb-3">
+              bioTunes as a Public Archive
+            </h2>
+            <p className="mb-4">
+              Because of all the limitations I faced, I decided to make bioTunes
+              a public archive. This means that I will no longer be maintaining
+              or updating this project but anyone can still use it and access
+              the code. It's my way of ensuring that the core idea of bioTunes
+              lives on and remains accessible to everyone who wants to use it.
+            </p>
+
+            <h2 className="text-black text-2xl font-semibold mb-3">
+              Release of Terminal Version (The OG)
+            </h2>
+            <p className="mb-4">
+              The working version you all saw on my Instagram story, will now be
+              avalible to use for those comfortable with coding and
+              command-line. I'll be making the original terminal-based version
+              of bioTunes public. This version requires you to have an IDE like
+              Visual Studio Code installed to set up and run, but it offers a
+              glimpse into the project's roots. If you're up for a bit of a
+              challenge, feel free to check it out!
+            </p>
+
+            <h2 className="text-black text-2xl font-semibold mb-3">
+              Future Plans
+            </h2>
+            <p className="mb-4">
+              Looking ahead, I'm exploring the possibility of bringing bioTunes
+              to Twitter. This platform offers different opportunities and
+              challenges, and I'm excited about the potential to integrate your
+              music tastes with your tweets. Stay tuned for updates on this new
+              direction!
+            </p>
+
+            <h2 className="text-2xl font-semibold mb-3 text-black ">
+              Thank You
+            </h2>
+            <p className="mb-4">
+              Your interest and support have been incredible motivators
+              throughout this journey. While the project has evolved from its
+              original concept, the core idea of sharing your music tastes in
+              creative ways remains. I'm committed to making bioTunes as great
+              as it can be, and I truly appreciate your patience.
+            </p>
+
+          </div>
           {/* Signature at the bottom */}
           <div className="mt-8 text-right">
             <p className="text-lg font-semibold text-gray-700">-Aviel</p>
