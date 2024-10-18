@@ -3,7 +3,7 @@ import React from "react";
 export default function Example() {
   //TODO Change URL
   //FIXME Change URL
-  const API_URL = process.env.REACT_APP_API_URL || "https://www.biotunes.app";
+  const API_URL = process.env.REACT_APP_API_URL || "https://www.biotunes.app/";
 
   const handleSpotifyLogin = () => {
     window.location.href = `${API_URL}/auth/spotify`;

@@ -4,7 +4,7 @@ import { useLocation, Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // Change URL as needed
-const API_URL = process.env.REACT_APP_API_URL || "https://www.biotunes.app";
+const API_URL = process.env.REACT_APP_API_URL || "https://www.biotunes.app/";
 
 function SuccessPage() {
   const [user, setUser] = useState(null);
