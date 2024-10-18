@@ -13,7 +13,7 @@ dataManagement.setDb(db);
 //FIXME Change URL
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3000",
+    origin: process.env.FRONTEND_URL || "https://www.biotunes.app",
     credentials: true,
   })
 );
@@ -119,7 +119,7 @@ app.get('/auth/spotify/callback', async (req, res) => {
         const token = jwt.sign({ id: spotify_id }, process.env.JWT_SECRET, {
           expiresIn: "1h",
         });
-        res.redirect(`http://localhost:3000/success?token=${token}`);
+        res.redirect(`https://www.biotunes.app/success?token=${token}`);
       }
     );
   } catch (error) {

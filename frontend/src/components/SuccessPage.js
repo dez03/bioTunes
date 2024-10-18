@@ -4,7 +4,7 @@ import { useLocation, Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 // Change URL as needed
-const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
+const API_URL = process.env.REACT_APP_API_URL || "https://www.biotunes.app";
 
 function SuccessPage() {
   const [user, setUser] = useState(null);
@@ -66,7 +66,7 @@ function SuccessPage() {
       const token = localStorage.getItem("token");
       try {
         const response = await axios.get(
-          `http://localhost:3001/api/${statType}`,
+          `https://www.biotunes.app/api/${statType}`,
           {
             headers: { Authorization: `Bearer ${token}` },
           }
