@@ -12,7 +12,7 @@ function SuccessPage() {
   const [error, setError] = useState(null);
   const [statType, setStatType] = useState("current-track");
   const [statData, setStatData] = useState(null);
-  const [lastListenedData, setLastListenedData] = useState(null);
+  const [lastListenedData] = useState(null);
   const [copySuccess, setCopySuccess] = useState("");
   const location = useLocation();
 
@@ -213,7 +213,7 @@ function SuccessPage() {
               className="mb-4 p-2 border rounded w-full"
             >
               <option value="current-track">Currently Listening</option>
-              {/* <option value="last-listened">Last Listened To</option> */}
+              {/* <option value="last-listened">Last List ened To</option> */}
               <option value="top-album">Top Album</option>
               <option value="top-track">Top Song</option>
               <option value="top-artist">Top Artist</option>
