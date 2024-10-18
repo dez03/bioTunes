@@ -3,19 +3,17 @@ const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
-
 const db = require("./db");
 const dataManagement = require("./dataManagement");
+const app = express();
 
 dataManagement.setDb(db);
 
-const app = express();
+//TODO Change URL 
+//FIXME Change URL
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === "production"
-        ? "https://www.biotunes.app"
-        : "http://localhost:3000",
+    origin: process.env.FRONTEND_URL || "http://localhost:3000",
     credentials: true,
   })
 );
@@ -121,7 +119,7 @@ app.get('/auth/spotify/callback', async (req, res) => {
         const token = jwt.sign({ id: spotify_id }, process.env.JWT_SECRET, {
           expiresIn: "1h",
         });
-        res.redirect(`https://www.biotunes.app/success?token=${token}`);
+        res.redirect(`http://localhost:3000/success?token=${token}`);
       }
     );
   } catch (error) {
@@ -185,13 +183,49 @@ app.get("/api/current-track", authenticateToken, async (req, res) => {
         artist: data.item.artists[0].name,
       });
     } else {
-      res.json({ isPlaying: false });
+      // If no song is playing, fetch the last listened track
+      const lastListened = await db.getAsync(
+        "SELECT * FROM last_listened WHERE user_id = ? ORDER BY played_at DESC LIMIT 1",
+        [user.id]
+      );
+      if (lastListened) {
+        res.json({
+          isPlaying: false,
+          track: lastListened.track,
+          artist: lastListened.artist,
+          lastPlayed: lastListened.played_at,
+        });
+      } else {
+        res.json({ isPlaying: false });
+      }
     }
   } catch (error) {
     console.error("Error in /api/current-track:", error);
     res
       .status(500)
       .json({ error: "Failed to fetch current track", details: error.message });
+  }
+});
+
+// Add a new endpoint for last listened track
+app.get("/api/last-listened", authenticateToken, async (req, res) => {
+  try {
+    const user = await getUserWithValidToken(req.user.id);
+    const lastListened = await db.getAsync(
+      "SELECT * FROM last_listened WHERE user_id = ? ORDER BY played_at DESC LIMIT 1",
+      [user.id]
+    );
+    if (lastListened) {
+      res.json(lastListened);
+    } else {
+      res.status(404).json({ error: "No last listened track found" });
+    }
+  } catch (error) {
+    console.error("Failed to fetch last listened track:", error);
+    res.status(500).json({
+      error: "Failed to fetch last listened track",
+      details: error.message,
+    });
   }
 });
 
@@ -310,52 +344,52 @@ app.get("/api/top-artist", authenticateToken, async (req, res) => {
 });
 
 //last song listened to enpoint
-app.post("/api/update-last-listened", authenticateToken, async (req, res) => {
-  try {
-    const user = await getUserWithValidToken(req.user.id);
-    const data = await getSpotifyData(
-      "/me/player/recently-played?limit=1",
-      user.spotify_access_token
-    );
-    if (data && data.items && data.items.length > 0) {
-      const track = data.items[0].track;
-      await db.runAsync(
-        `INSERT OR REPLACE INTO last_listened (user_id, track, artist, played_at) VALUES (?, ?, ?, ?)`,
-        [user.id, track.name, track.artists[0].name, data.items[0].played_at]
-      );
-      res.json({ message: "Last listened track updated successfully" });
-    } else {
-      res.status(404).json({ error: "No recently played tracks found" });
-    }
-  } catch (error) {
-    console.error("Failed to update last listened track:", error);
-    res.status(500).json({
-      error: "Failed to update last listened track",
-      details: error.message,
-    });
-  }
-});
+// app.post("/api/update-last-listened", authenticateToken, async (req, res) => {
+//   try {
+//     const user = await getUserWithValidToken(req.user.id);
+//     const data = await getSpotifyData(
+//       "/me/player/recently-played?limit=1",
+//       user.spotify_access_token
+//     );
+//     if (data && data.items && data.items.length > 0) {
+//       const track = data.items[0].track;
+//       await db.runAsync(
+//         `INSERT OR REPLACE INTO last_listened (user_id, track, artist, played_at) VALUES (?, ?, ?, ?)`,
+//         [user.id, track.name, track.artists[0].name, data.items[0].played_at]
+//       );
+//       res.json({ message: "Last listened track updated successfully" });
+//     } else {
+//       res.status(404).json({ error: "No recently played tracks found" });
+//     }
+//   } catch (error) {
+//     console.error("Failed to update last listened track:", error);
+//     res.status(500).json({
+//       error: "Failed to update last listened track",
+//       details: error.message,
+//     });
+//   }
+// });
 
-app.get("/api/last-listened", authenticateToken, async (req, res) => {
-  try {
-    const user = await getUserWithValidToken(req.user.id);
-    const lastListened = await db.getAsync(
-      "SELECT * FROM last_listened WHERE user_id = ?",
-      [user.id]
-    );
-    if (lastListened) {
-      res.json(lastListened);
-    } else {
-      res.status(404).json({ error: "No last listened track found" });
-    }
-  } catch (error) {
-    console.error("Failed to fetch last listened track:", error);
-    res.status(500).json({
-      error: "Failed to fetch last listened track",
-      details: error.message,
-    });
-  }
-});
+// app.get("/api/last-listened", authenticateToken, async (req, res) => {
+//   try {
+//     const user = await getUserWithValidToken(req.user.id);
+//     const lastListened = await db.getAsync(
+//       "SELECT * FROM last_listened WHERE user_id = ?",
+//       [user.id]
+//     );
+//     if (lastListened) {
+//       res.json(lastListened);
+//     } else {
+//       res.status(404).json({ error: "No last listened track found" });
+//     }
+//   } catch (error) {
+//     console.error("Failed to fetch last listened track:", error);
+//     res.status(500).json({
+//       error: "Failed to fetch last listened track",
+//       details: error.message,
+//     });
+//   }
+// });
 
 async function getUserWithValidToken(userId) {
   return new Promise((resolve, reject) => {
@@ -424,6 +458,7 @@ function authenticateToken(req, res, next) {
   });
 }
 
+// Use server.listen instead of app.listen
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

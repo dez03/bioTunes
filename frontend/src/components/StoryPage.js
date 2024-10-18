@@ -35,7 +35,7 @@ export default function StoryPage() {
 
         {/* Page Content */}
         <div className="max-w-3xl py-16 mx-auto min-h-screen">
-          <h1 className="text-2xl font-bold mb-6">The Story Behind bioTunes</h1>
+          <h1 className="text-3xl font-bold mb-6">The Story Behind bioTunes</h1>
           <p className="text-lg text-gray-700 leading-8 mb-4">
             I started this project on August 6th, 2024. The idea originally came
             from my friend&nbsp;
