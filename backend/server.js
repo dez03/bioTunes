@@ -803,54 +803,6 @@ app.get("/api/top-artist", authenticateToken, async (req, res) => {
   }
 });
 
-//last song listened to enpoint
-// app.post("/api/update-last-listened", authenticateToken, async (req, res) => {
-//   try {
-//     const user = await getUserWithValidToken(req.user.id);
-//     const data = await getSpotifyData(
-//       "/me/player/recently-played?limit=1",
-//       user.spotify_access_token
-//     );
-//     if (data && data.items && data.items.length > 0) {
-//       const track = data.items[0].track;
-//       await db.runAsync(
-//         `INSERT OR REPLACE INTO last_listened (user_id, track, artist, played_at) VALUES (?, ?, ?, ?)`,
-//         [user.id, track.name, track.artists[0].name, data.items[0].played_at]
-//       );
-//       res.json({ message: "Last listened track updated successfully" });
-//     } else {
-//       res.status(404).json({ error: "No recently played tracks found" });
-//     }
-//   } catch (error) {
-//     console.error("Failed to update last listened track:", error);
-//     res.status(500).json({
-//       error: "Failed to update last listened track",
-//       details: error.message,
-//     });
-//   }
-// });
-
-// app.get("/api/last-listened", authenticateToken, async (req, res) => {
-//   try {
-//     const user = await getUserWithValidToken(req.user.id);
-//     const lastListened = await db.getAsync(
-//       "SELECT * FROM last_listened WHERE user_id = ?",
-//       [user.id]
-//     );
-//     if (lastListened) {
-//       res.json(lastListened);
-//     } else {
-//       res.status(404).json({ error: "No last listened track found" });
-//     }
-//   } catch (error) {
-//     console.error("Failed to fetch last listened track:", error);
-//     res.status(500).json({
-//       error: "Failed to fetch last listened track",
-//       details: error.message,
-//     });
-//   }
-// });
-
 async function getUserWithValidToken(userId) {
   return new Promise((resolve, reject) => {
     db.get("SELECT * FROM users WHERE id = ?", [userId], async (err, user) => {
