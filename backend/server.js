@@ -484,6 +484,11 @@ app.use(
   })
 );
 
+app.get("/", (req, res) => {
+  res.send("BioTunes server is running!");
+});
+
+
 const PORT = process.env.PORT || 3001;
 
 // Spotify authentication route
