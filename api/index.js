@@ -82,7 +82,6 @@ app.get("/auth/spotify/callback", async (req, res) => {
         spotify_id,
         display_name,
         email,
-        spotify_id,
         access_token,
         refresh_token,
         expiryDate.toISOString(),
