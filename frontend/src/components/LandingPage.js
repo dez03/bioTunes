@@ -4,7 +4,7 @@ export default function Example() {
   //TODO Change URL
   //FIXME Change URL
 const API_URL =
-  process.env.REACT_APP_API_URL || "https://biotunes.up.railway.app/";
+  process.env.REACT_APP_API_URL || "https://biotunes-server.vercel.app/";
 
 
   const handleSpotifyLogin = () => {

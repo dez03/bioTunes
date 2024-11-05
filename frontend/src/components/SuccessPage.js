@@ -3,9 +3,9 @@ import axios from "axios";
 import { useLocation, Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-// Change URL as needed
+// TODO Change URL as needed
 const API_URL =
-  process.env.REACT_APP_API_URL || "https://biotunes.up.railway.app/";
+  process.env.REACT_APP_API_URL || "https://biotunes-server.vercel.app/";
 
 function SuccessPage() {
   const [user, setUser] = useState(null);
