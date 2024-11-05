@@ -469,8 +469,8 @@ const express = require("express");
 const cors = require("cors");
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
-const db = require("./db");
-const dataManagement = require("./dataManagement");
+const db = require("../db");
+const dataManagement = require("../dataManagement");
 const app = express();
 
 dataManagement.setDb(db);
@@ -875,11 +875,13 @@ function authenticateToken(req, res, next) {
   });
 }
 
-// Use server.listen instead of app.listen
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// // Use server.listen instead of app.listen
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
 
 app.get("/health", (req, res) => {
   res.status(200).send("OK");
 });
+
+module.exports = app; // Export the app for Vercel
