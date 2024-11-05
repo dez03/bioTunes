@@ -139,7 +139,6 @@ export default function StoryPage() {
               creative ways remains. I'm committed to making bioTunes as great
               as it can be, and I truly appreciate your patience.
             </p>
-
           </div>
           {/* Signature at the bottom */}
           <div className="mt-8 text-right">
